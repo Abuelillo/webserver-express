@@ -1,0 +1,81 @@
+//variable
+@color-button: #d24444;
+
+#submitfrm {
+    color: #fff;
+    //variable
+    background:@color-button;
+    border: 1px solid @color-button - #222;
+    padding: 5px 12px;
+}
+//funcion
+.border-redondeado(@radio: 10px){
+    border-radius: @radio;
+    -webkit-border-radius: @radio;
+    -moz-border-radius:@radio;
+}
+.box-center(@var,@var2){
+    display: block;
+    margin: @var @var2;
+    width:  20%;
+}
+
+#columna{
+    background: rgb(31, 120, 143);
+    width: 500px;
+    padding: 10px;
+    //funcion
+    .border-redondeado;
+}
+
+.sub-columna{
+    background: #424242;
+    width: 500px;
+    padding: 10px;
+    //funcion
+    .border-redondeado(50px);
+}
+//operaciones y escalonado
+@color1: red;
+@border1:10px;
+@color2: blue;
+
+div{
+    p{
+        color: @color1 + @color2 ;
+        border: @border1 - 2 solid black;
+        //escalonado
+        #jopetas{
+            background: lighten(@color1,20%);
+            .box-center(2px, 10px);
+        }
+    }
+}
+/*
+lighten(@color1, 10%); // devuelve un color un 10% mas "claro" que @color
+darken(@color1, 10%); // devuelve un color un 10% mas "oscuro" que @color
+saturate(@color1, 10%); // devuelve un color un 10% "más" saturado que @color
+desaturate(@color1, 10%); // devuelve un color un 10% "menos" saturado que @color
+fadein(@color1, 10%); // devuelve un color un 10% "menos" transparente que @color
+fadeout(@color1, 10%); // devuelve un color un 10% "más" transparente que @color
+spin(@color1, 10); // devuelve un color con 10 grados de tono mayor que @color
+spin(@color1, -10); // devuelve un color con 10 grados de tono menor que @color
+hue(@color1); // devuelve el canal hue de @color
+saturation(@color1); // devuelve el canal saturation de @color
+lightness(@color1); // devuelve el canal lightness de @color
+*/
+
+
+
+
+//importacion de otros estilos
+/*
+@import (inline) "cosas_inline.css"; // IMPORTA EL ARCHIVO SIN TRATARLO // Con inline se pueden incluir archivos sin tratar su contenido, esta opción es útil si se quiere incluir algún fragmento de CSS que no soporte Less como algunos hacks.
+@import (reference) "cosas_reference.less"; // IMPORTA SOLO LOS ESTILOS REFERENCIADOS // es decir, solo se importan los estilos que se extiendan con extend y los mixins,
+@import (once) "cosas_multiple.less"; // IMPORTA EL ARCHIVO UNA SOLA VEZ // el archivo solo sea importado una única vez, si se vuelve a encontrar un @import dek mismo archivo simplemente se ignora
+@import (multiple) "cosas_multiple.less"; // SE PUEDE IMPORTAR EL MISMO ARCHIVO VARIAS VECES
+@import (optional) "no_existe.fake"; // IMPORTA EL ARCHIVO SI EXISTE
+@import (less) "cosas_less_css.css";
+*/
+@import (css) "style.css";
+

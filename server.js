@@ -28,6 +28,10 @@ app.get('/about', (req, res) => {
     res.render('about');
 })
 
+app.get('/less', (req, res) => {
+    res.render('less');
+})
+
 /*
 app.get('/data', function(req, res) {
     //res.send('Hello World')

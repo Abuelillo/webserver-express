@@ -1,0 +1,112 @@
+//preprocesador sass(scss),less
+//variable
+$color1 :red;
+#submitfrm {
+    //debug -> console.log()
+    @debug $color1; // @debug type-of($color1);
+    color: #fff;
+    //variable
+    background: $color1;
+    border: 1px solid $color1 - #222;
+    padding: 5px 12px;
+}
+
+//anidacion
+.menu {
+    margin: 0px;
+    grid-template: {
+        columns: 20px 20px;
+        rows: auto;
+    }
+    ;
+    .link {
+        text-decoration: none;
+        ;
+    }
+}
+
+//mixins -> codigo que se puede reutilizar
+@mixin button {
+    display: inline-block;
+    text-decoration: none;
+    padding: .5em 1em;
+    //& -> repetir el selector padre
+    &:hover {
+        background: red;
+    }
+}
+
+.button {
+    @include button;
+}
+
+// Parametros
+@mixin button($brackpoint) {
+    display: inline-block;
+    text-decoration: none;
+    padding: .5em 1em;
+    //& -> repetir el selector padre
+    &:hover {
+        background: red;
+    }
+    @media screen and (min-width: $brackpoint) {
+        background: green;
+    }
+}
+
+.button {
+    @include button(400px);
+}
+
+//ciclo for --SOLO EN SASS
+@for $i from 1 to 5 {
+    .col-#{$i} {
+        width: $i * 2%;
+    }
+}
+
+// Mapa -> lo reconoce como un objeto
+//$map: ( primary:red, secundary:green, terriary: blue);
+$bp:(m:640px, l:1024px);
+@media screen and (min-width: map-get($bp, m)) {
+    //map-get($bp,m) -> para obtener valores de un mapa
+    @for $i from 1 through 5 {
+        .col-m-#{$i * 5} {
+            width: $i * 2%;
+        }
+    }
+}
+
+//bucle each
+// Lista -> se comporta como una lista
+//$list: 1px solid red;
+//@each $mq in list {
+@each $mq in movil,
+tablet,
+web,
+hd {
+    @for $i from 1 through 5 {
+        //#{} interpolacion -> accion sobre el valor
+        .#{$mq}-m#{$i * 5} {
+            width: $i * 2%;
+        }
+    }
+}
+
+//ejemplo2 each con map
+$sizes:(movil:480px, tablet:786px, web:1025px, hd:1400px);
+@each $tipo,
+$tamaño in $sizes {
+    @media all and (min-width:#{$tamaño}) {
+        @for $i from 1 through 5 {
+            //#{} interpolacion -> accion sobre el valor
+            .#{$tipo}-m#{$i * 5} {
+                width: $i * 2%;
+            }
+        }
+    }
+}
+
+;
+//import 
+@import "style";
